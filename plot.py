@@ -10,7 +10,7 @@ closed = np.loadtxt("SASA_closed.dat")
 opened = np.loadtxt("SASA_open.dat")
 
 # 2 panel figure
-fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(10,5), sharex=True, sharey=True)
+fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(7,4), sharex=True, sharey=True)
 
 # plot closed sasa
 ax[0].plot(closed[:,0], closed[:,1], lw=1.5, label="G7")
