@@ -1,0 +1,117 @@
+#######################
+# SYSTEM GENERAL INFO #
+#######################
+ 
+ PSF/PDB for full-length SPIKE protein in the Closed state, including protein, glycans, membrane, water and ions. System has been equilibrated with all-atom MD using NAMD.
+
+ Publication:
+ Lorenzo Casalino十, Zied Gaieb十, Jory A. Goldsmith, Christy K. Hjorth, Abigail C. Dommer, Aoife M. Harbison, Carl A. Fogarty, Emilia P. Barros, Bryn C. Taylor, Jason S. McLellan,  Elisa Fadda, Rommie E. Amaro* - Submitted
+
+ 十 Shared first authorship
+ * Corresponding author (ramaro@ucsd.edu)
+ Preprint doi: 10.1101/2020.06.11.146522
+
+ Reference PDB structure: 6VXX.
+
+ Total number of atoms: 1658914
+ Cell size: 202.887  201.565  399.427  90.00  90.00  90.00
+ Protein atoms: 58634
+ Glycans atoms: 14236
+ Lipids atoms: 165561
+ Water molecules: 472511 (atoms: 1417533)
+ Ions atoms: 1334 Cl- / 1616 Na+; Concentration: 150 mM.
+ Force Fields: CHARMM36 All-atom additive
+
+
+###########
+# PROTEIN #
+###########
+ 
+#NON-CANONICAL PROTEIN RESIDUES RESNAMES:
+ HSD = neutral HIS, proton on ND1
+ HSE = neutral HIS, proton on NE2
+ CYP = palmitoylated cysteine
+ 
+#PROTEIN CHAINS: 
+ A (16-1273) - RBD "DOWN"
+ B (16-1273)
+ C (16-1273)
+
+#PROTEIN SEGNAMES:
+ AS1 (chain A, 13-685) - RBD "DOWN"
+ AS2 (chain A, 686-1273)
+ BS1 (chain B, 13-685)
+ BS2 (chain B, 686-1273)
+ CS1 (chain C, 13-685)
+ CS2 (chain C, 686-1273)
+
+
+###########
+# GLYCANS #
+###########
+
+#GLYCAN RESIDUES RESNAMES:
+ BGLN = 2-acetyl-2-deoxy-beta-D-glucosamine
+ AGAN = 2-acetyl-2-deoxy-alpha-D-galactosamine
+ BGAL = beta-D-galactose
+ BMAN = beta-D-mannose
+ AMAN = alpha-D-mannose
+ AFUC = alpha-L-fucose
+ ANE5 = N-acetyl-alpha-D-neuraminic acid
+  
+#GLYCANS UNIQUE CHAIN:
+ G 
+
+#GLYCANS SEGNAMES:
+ G1..G22  (N-GLYCANS attached to chain A)   
+ G23..G24 (O-GLYCANS attached to chain A)
+
+ G25..G46 (N-GLYCANS attached to chain B) 
+ G47      (O-GLYCAN  attached to chain B)
+
+ G48..G69 (N-GLYCANS attached to chain C)
+ G70 	  (O-GLYCAN  attached to chain C)
+
+
+##########
+# LIPIDS #
+##########
+
+#LIPID RESIDUES RESNAMES:
+ POPC = 3-palmitoyl-2-oleoyl-D-glycero-1-Phosphatidylcholine
+ POPS = 3-palmitoyl-2-oleoyl-D-glycero-1-Phosphatidylserine
+ POPE = 3-palmitoyl-2-oleoyl-D-glycero-1-Phosphatidylethanolamine
+ POPI = 1-Palmitoyl-2-Oleoyl-inositol 
+ CHL1 = cholesterol
+
+#LIPIDS UNIQUE CHAIN:
+ M
+
+#LIPIDS UNIQUE SEGNAME:
+ MEMB
+
+
+#########
+# WATER #
+#########
+
+#WATER UNIQUE CHAIN:
+ W
+
+#WATER UNIQUE SEGNAME:
+ WAT
+
+
+########
+# IONS #
+########
+
+#ION RESIDUES RESNAMES:
+ SOD = Na+
+ CLA = Cl-
+
+#IONS UNIQUE CHAIN: 
+ I
+
+#IONS UNIQUE SEGNAME:
+ IONS

@@ -1,0 +1,5 @@
+parm PSF-PDB_spike_open_prot_glyc_memb_wat_ions_amarolab/spike_open_prot_glyc_memb_wat_ions_amarolab.pdb
+trajin PSF-PDB_spike_open_prot_glyc_memb_wat_ions_amarolab/spike_open_prot_glyc_memb_wat_ions_amarolab.pdb
+surf G31 :64727-64970 out G31_SASA_OPEN.dat 
+surf G54 :69455-69698 out G54_SASA_OPEN.dat
+surf G7  :59922-60144 out G7_SASA_OPEN.dat
