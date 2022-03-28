@@ -6,7 +6,7 @@ set G38 [atomselect top "serial 66206 to 66365"]
 set G61 [atomselect top "serial 70941 to 71100"] 
 
 # selection and file header
-set protein [atomselect top "protein or lipid or glycan"]
+set protein [atomselect top "protein or glycan"]
 set output [open "SASA_TYPE.dat" w]
 puts $output "#SASA Calculations for N709 of SARS-COV2 spike_TYPE"
 puts $output "#probe-radius\tG14\tG38\tG61"
