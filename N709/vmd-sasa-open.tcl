@@ -1,14 +1,14 @@
 # add new molecule and select the glycans of interest
-mol new {../spike_TYPE/spike_TYPE.psf} type {psf} first 0 last -1 step 1 waitfor 1
-mol addfile {../spike_TYPE/spike_TYPE.pdb} type {pdb} first 0 last -1 step 1 waitfor 1 0
+mol new {../spike_open/spike_open.psf} type {psf} first 0 last -1 step 1 waitfor 1
+mol addfile {../spike_open/spike_open.pdb} type {pdb} first 0 last -1 step 1 waitfor 1 0
 set G14 [atomselect top "serial 61272 to 61452"] 
 set G38 [atomselect top "serial 66206 to 66365"] 
 set G61 [atomselect top "serial 70941 to 71100"] 
 
 # selection and file header
 set protein [atomselect top "protein or lipid or glycan"]
-set output [open "SASA_TYPE.dat" w]
-puts $output "#SASA Calculations for N709 of SARS-COV2 spike_TYPE"
+set output [open "SASA_open.dat" w]
+puts $output "#SASA Calculations for N709 of SARS-COV2 spike_open"
 puts $output "#probe-radius\tG14\tG38\tG61"
 
 # use the default water probe radius of 1.4A
@@ -28,7 +28,7 @@ for {set i 2} {$i < 22} {incr i} {
 }
 
 puts "Done."	
-puts "output file: SASA_TYPE.dat"
+puts "output file: SASA_open.dat"
 close $output
 
 quit
