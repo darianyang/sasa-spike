@@ -32,5 +32,5 @@ ax[1].set_title("Open Spike")
 ax[1].grid(True, alpha=0.3)
 
 fig.tight_layout()
-fig.savefig("SASA.png", dpi=300, transparent=True)
+fig.savefig("SASA_N234.png", dpi=300, transparent=False)
 plt.show()
