@@ -31,6 +31,8 @@ ax[1].set_xlabel("Probe Radius ($\AA$)")
 ax[1].set_title("Open Spike")
 ax[1].grid(True, alpha=0.3)
 
+ax[0].set_ylim(0,2250)
+
 fig.tight_layout()
 fig.savefig("SASA_N234.png", dpi=300, transparent=False)
 plt.show()
