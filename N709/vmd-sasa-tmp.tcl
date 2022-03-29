@@ -19,7 +19,7 @@ puts $output "1.4\t$sasaG14\t$sasaG38\t$sasaG61"
 
 # tcl loop of multiple probe radii (int only)
 for {set i 2} {$i < 22} {incr i} {
-    # sasa calculation for trimer N234A glycans
+    # sasa calculation for trimer glycans
     set sasaG14 [measure sasa $i $protein -restrict $G14]
     set sasaG38 [measure sasa $i $protein -restrict $G38]
     set sasaG61 [measure sasa $i $protein -restrict $G61]
