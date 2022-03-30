@@ -1,9 +1,10 @@
 """
-Use MDtraj to calculate the per-residue or per-atom SASA.
+Use MDtraj to calculate the per-atom SASA.
 """
 
 import numpy as np
 import mdtraj as md
+from tqdm.auto import tqdm
 
 closed = md.load("../spike_closed/spike_closed_pg.pdb")
 opened = md.load("../spike_open/spike_open_pg.pdb")
@@ -44,29 +45,41 @@ def calc_sasa(traj, radius=1.4, atomrange=None):
         return np.sum(partial) * 10**2
         
 
-def calc_trimer(traj, atomranges, radius=1.4)
+def calc_trimer_multi_radii(traj, atomranges, saveout):
     """
     Parameters
     ----------
     traj : mdtraj trajectory object
     atomranges : ((start, end), (start, end), (start, end))
         Tuple of tuples designating the glycans on the 3 monomers.
-    radius : float
-        Solvent probe radius for SASA calculations (Angstroms)
-
-    Returns
-    -------
-    partial_sasas : list
-        Partial sasa values of each tuple in atomranges.
+    saveout : str
+        Output filename for the tsv.
     """
-    # calc partial sasa of each atomrange
-    return [calc_sasa(traj, atomrange=atomrange, radius=radius) \
-            for atomrange in atomranges
-            ]
+    # list of probe radii
+    radii = [1.4] + [i for i in range(2,22)]
+    
+    # build numpy array of partial sasa at various radii
+    # columns = probe_radius G1 G2 G3+
+    radii_sasas = np.zeros(shape=(len(radii), len(atomranges) + 1)) 
+
+    print(f"Beginning SASA calculations to generate {saveout}")
+    for index, radius in enumerate(tqdm(radii)):
+        # calc partial sasa of each atomrange
+        single_sasa = [calc_sasa(traj, atomrange=atomrange, radius=radius) \
+                       for atomrange in atomranges]
+
+        # fill out array with partial sasa values
+        radii_sasas[index, :] = [radius] + single_sasa
+
+    # save the filled sasa values to tsv
+    np.savetxt(saveout, radii_sasas, delimiter="\t")
 
 N234 = ((59922, 60144), (64727, 64970), (69455, 69698))
 N709 = ((61272, 61452), (66206, 66365), (70941, 71100))
-radii = [1.4] + [i for i in range(2,22)]
 
-print(calc_trimer(closed, N234, radius=1.4))
+calc_trimer_multi_radii(closed, N234, "SASA_closed_N234.tsv")
+calc_trimer_multi_radii(opened, N234, "SASA_opened_N234.tsv")
+
+calc_trimer_multi_radii(closed, N709, "SASA_closed_N709.tsv")
+calc_trimer_multi_radii(opened, N709, "SASA_opened_N709.tsv")
 
