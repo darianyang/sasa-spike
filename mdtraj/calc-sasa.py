@@ -33,7 +33,7 @@ def calc_sasa(traj, radius=1.4, atomrange=None):
 
     # total SASA
     #total_sasa = sasa.sum(axis=1)
-    #print("Total SASA (A^2): ", total_sasa * 10**2)
+    #print("Total SASA (Å^2): ", total_sasa * 10**2)
 
     if atomrange is not None:
         # python indexing array, starts at 0 instead of PDB numbering
@@ -42,6 +42,7 @@ def calc_sasa(traj, radius=1.4, atomrange=None):
         end = atomrange[1]
         # calc partial sasa of first frame (since PDB so 1 frame only)
         partial = sasa[0,start:end]
+        # convert nm^2 to Å^2
         return np.sum(partial) * 10**2
         
 
