@@ -6,10 +6,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # import datasets
-#glycan = "N234"
-#gnames = ["G7", "G31", "G54"]
-glycan = "N709"
-gnames = ["G14", "G38", "G61"]
+glycan = "N234"
+gnames = ["Chain A", "Chain B", "Chain C"]
+#glycan = "N709"
+#gnames = ["G14", "G38", "G61"]
 closed = np.loadtxt(f"SASA_closed_{glycan}.tsv")
 opened = np.loadtxt(f"SASA_opened_{glycan}.tsv")
 
@@ -24,7 +24,7 @@ ax[0].legend()
 ax[0].set_ylabel(f"{glycan} SASA ($\AA^2$)")
 ax[0].set_xlabel("Probe Radius ($\AA$)")
 ax[0].set_title("Closed Spike")
-ax[0].grid(True, alpha=0.3)
+#ax[0].grid(True, alpha=0.3)
 
 # plot opened sasa
 ax[1].plot(opened[:,0], opened[:,1], lw=1.5, label=gnames[0])
@@ -33,9 +33,10 @@ ax[1].plot(opened[:,0], opened[:,3], lw=1.5, label=gnames[2])
 ax[1].legend()
 ax[1].set_xlabel("Probe Radius ($\AA$)")
 ax[1].set_title("Open Spike")
-ax[1].grid(True, alpha=0.3)
+#ax[1].grid(True, alpha=0.3)
 
-ax[0].set_ylim(0,2250)
+#ax[0].set_ylim(0,2250)
+ax[0].set_ylim(0,2000)
 
 fig.tight_layout()
 fig.savefig(f"SASA_{glycan}.png", dpi=300, transparent=False)
